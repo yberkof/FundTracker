@@ -7,18 +7,18 @@ import 'package:fund_tracker/models/preferences.dart';
 import 'package:fund_tracker/models/suggestion.dart';
 import 'package:fund_tracker/models/transaction.dart';
 import 'package:fund_tracker/pages/filters/filterList.dart';
+import 'package:fund_tracker/pages/home/mainDrawer.dart';
 import 'package:fund_tracker/pages/statistics/statistics.dart';
 import 'package:fund_tracker/pages/transactions/transactionForm.dart';
 import 'package:fund_tracker/pages/transactions/transactionsList.dart';
 import 'package:fund_tracker/services/databaseWrapper.dart';
-import 'package:fund_tracker/pages/home/mainDrawer.dart';
 import 'package:fund_tracker/services/fireDB.dart';
 import 'package:fund_tracker/services/localDB.dart';
 import 'package:fund_tracker/services/plannedTransactions.dart';
 import 'package:fund_tracker/services/search.dart';
 import 'package:fund_tracker/services/sync.dart';
-import 'package:fund_tracker/shared/library.dart';
 import 'package:fund_tracker/shared/components.dart';
+import 'package:fund_tracker/shared/library.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
@@ -150,11 +150,11 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(CommunityMaterialIcons.file_document),
-            title: Text('Records'),
+            label: ('Records'),
           ),
           BottomNavigationBarItem(
             icon: Icon(CommunityMaterialIcons.chart_pie),
-            title: Text('Statistics'),
+            label: ('Statistics'),
           )
         ],
         currentIndex: _selectedIndex,

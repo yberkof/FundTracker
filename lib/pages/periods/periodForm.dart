@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fund_tracker/models/period.dart';
 import 'package:fund_tracker/services/databaseWrapper.dart';
 import 'package:fund_tracker/services/sync.dart';
+import 'package:fund_tracker/shared/components.dart';
 import 'package:fund_tracker/shared/constants.dart';
 import 'package:fund_tracker/shared/library.dart';
 import 'package:fund_tracker/shared/styles.dart';
-import 'package:fund_tracker/shared/components.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -107,7 +107,7 @@ class _PeriodFormState extends State<PeriodForm> {
                   TextFormField(
                     controller: _nameController,
                     focusNode: _nameFocus,
-                    autovalidate: _name.isNotEmpty,
+                    autocorrect: _name.isNotEmpty,
                     validator: (val) {
                       if (val.isEmpty) {
                         return 'Enter a name for this period.';
@@ -130,7 +130,7 @@ class _PeriodFormState extends State<PeriodForm> {
                   TextFormField(
                     controller: _durationValueController,
                     focusNode: _durationValueFocus,
-                    autovalidate: _durationValue.isNotEmpty,
+                    autocorrect: _durationValue.isNotEmpty,
                     validator: (val) {
                       if (val.isEmpty) {
                         return 'Enter a value for the duration.';

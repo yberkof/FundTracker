@@ -55,12 +55,12 @@ class _PeriodicState extends State<Periodic> {
                 x: index,
                 barRods: [
                   BarChartRodData(
-                    y: periodIncome,
+                    toY: periodIncome,
                     width: rodWidth,
                     color: Colors.green,
                   ),
                   BarChartRodData(
-                    y: periodExpenses,
+                    toY: periodExpenses,
                     width: rodWidth,
                     color: Colors.red,
                   ),
@@ -104,41 +104,41 @@ class _PeriodicState extends State<Periodic> {
             BarChartData(
               alignment: BarChartAlignment.spaceAround,
               barGroups: groupData,
+              maxY: 500,
               titlesData: FlTitlesData(
                 show: true,
-                leftTitles: SideTitles(
-                  showTitles: true,
-                  margin: 8,
-                  getTitles: (value) {
-                    if (value % 500 == 0) {
-                      int per500 = value ~/ 500;
-                      if (per500 == 0) {
-                        return '\$0';
-                      } else {
-                        String grand =
-                            (per500 % 2 == 0 ? per500 ~/ 2 : per500 / 2)
-                                .toString();
-                        return '\$${grand}K';
+                leftTitles: AxisTitles(
+                  sideTitles: SideTitles(
+                    showTitles: true,
+                    interval: 8,
+                    getTitlesWidget: (value, _) {
+                      if (value % 500 == 0) {
+                        int per500 = value ~/ 500;
+                        if (per500 == 0) {
+                          return Text('\$0');
+                        } else {
+                          String grand =
+                              (per500 % 2 == 0 ? per500 ~/ 2 : per500 / 2)
+                                  .toString();
+                          return Text('\$${grand}K');
+                        }
                       }
-                    }
-                    return '';
-                  },
-                ),
-                bottomTitles: SideTitles(
-                  showTitles: true,
-                  textStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 10,
+                      return Text('');
+                    },
                   ),
-                  getTitles: (index) =>
-                      index == _nonEmptyPeriods.length - 1 ? 'Current' : '',
+                ),
+                bottomTitles: AxisTitles(
+                  sideTitles: SideTitles(
+                    showTitles: true,
+                    getTitlesWidget: (index, meta) => Text('current'),
+                  ),
                 ),
               ),
               barTouchData: BarTouchData(
                 touchTooltipData: BarTouchTooltipData(
                   getTooltipItem: (_, __, rodData, rodIndex) {
                     return BarTooltipItem(
-                      getAmountStr(rodData.y),
+                      getAmountStr(rodData.toY),
                       TextStyle(
                         color: rodData.color,
                       ),
@@ -146,10 +146,10 @@ class _PeriodicState extends State<Periodic> {
                   },
                 ),
                 touchExtraThreshold: EdgeInsets.symmetric(horizontal: 8),
-                touchCallback: (response) {
-                  if (response.spot != null) {
+                touchCallback: (response, res) {
+                  if (res.spot != null) {
                     setState(() {
-                      touchedGroupIndex = response.spot.touchedBarGroupIndex;
+                      touchedGroupIndex = res.spot.touchedBarGroupIndex;
                     });
                   }
                 },

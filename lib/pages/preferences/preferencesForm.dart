@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart' as FirebaseAuthentication show User;
 import 'package:flutter/material.dart';
 import 'package:fund_tracker/models/preferences.dart';
+import 'package:fund_tracker/pages/home/mainDrawer.dart';
 import 'package:fund_tracker/services/databaseWrapper.dart';
 import 'package:fund_tracker/services/sync.dart';
+import 'package:fund_tracker/shared/components.dart';
 import 'package:fund_tracker/shared/constants.dart';
 import 'package:fund_tracker/shared/library.dart';
 import 'package:fund_tracker/shared/styles.dart';
-import 'package:fund_tracker/shared/components.dart';
-import 'package:fund_tracker/pages/home/mainDrawer.dart';
 
 class PreferencesForm extends StatefulWidget {
   final FirebaseAuthentication.User user;
@@ -155,7 +155,7 @@ class _PreferencesFormState extends State<PreferencesForm> {
                   : TextFormField(
                       controller: _limitController,
                       focusNode: _limitFocus,
-                      autovalidate: _isLimitDaysEnabled
+                autocorrect: _isLimitDaysEnabled
                           ? _limitDays.isNotEmpty
                           : _limitPeriods.isNotEmpty,
                       validator: (val) {

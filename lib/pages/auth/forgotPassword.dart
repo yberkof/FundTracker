@@ -48,7 +48,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             TextFormField(
               controller: _emailController,
               focusNode: _emailFocus,
-              autovalidate: _email.isNotEmpty,
+              autocorrect: _email.isNotEmpty,
               validator: emailValidator,
               decoration: clearInput(
                 labelText: 'Email',

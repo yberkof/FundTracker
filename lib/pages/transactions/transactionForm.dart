@@ -9,10 +9,10 @@ import 'package:fund_tracker/models/transaction.dart';
 import 'package:fund_tracker/services/databaseWrapper.dart';
 import 'package:fund_tracker/services/plannedTransactions.dart';
 import 'package:fund_tracker/services/sync.dart';
+import 'package:fund_tracker/shared/components.dart';
 import 'package:fund_tracker/shared/constants.dart';
 import 'package:fund_tracker/shared/library.dart';
 import 'package:fund_tracker/shared/styles.dart';
-import 'package:fund_tracker/shared/components.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -304,7 +304,7 @@ class _TransactionFormState extends State<TransactionForm> {
             TextFormField(
               controller: _amountController,
               focusNode: _amountFocus,
-              autovalidate: _amount.isNotEmpty,
+              autocorrect: _amount.isNotEmpty,
               validator: (val) {
                 if (val.isEmpty) {
                   return 'Please enter an amount.';
@@ -394,7 +394,7 @@ class _TransactionFormState extends State<TransactionForm> {
               TextFormField(
                 controller: _frequencyValueController,
                 focusNode: _frequencyValueFocus,
-                autovalidate: _frequencyValue.isNotEmpty,
+                autocorrect: _frequencyValue.isNotEmpty,
                 validator: (val) {
                   if (val.isEmpty) {
                     return 'Enter a value.';
@@ -438,7 +438,7 @@ class _TransactionFormState extends State<TransactionForm> {
               TextFormField(
                 controller: _occurrenceValueController,
                 focusNode: _occurrenceValueFocus,
-                autovalidate: _occurrenceValue.isNotEmpty,
+                autocorrect: _occurrenceValue.isNotEmpty,
                 validator: (val) {
                   if (val.isEmpty) {
                     return null;

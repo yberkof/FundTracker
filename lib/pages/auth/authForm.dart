@@ -6,9 +6,9 @@ import 'package:fund_tracker/pages/auth/validators.dart';
 import 'package:fund_tracker/services/auth.dart';
 import 'package:fund_tracker/services/databaseWrapper.dart';
 import 'package:fund_tracker/services/sync.dart';
+import 'package:fund_tracker/shared/components.dart';
 import 'package:fund_tracker/shared/constants.dart';
 import 'package:fund_tracker/shared/styles.dart';
-import 'package:fund_tracker/shared/components.dart';
 
 class AuthForm extends StatefulWidget {
   final Function toggleView;
@@ -109,7 +109,7 @@ class _AuthFormState extends State<AuthForm> {
                   TextFormField(
                     controller: _emailController,
                     focusNode: _emailFocus,
-                    autovalidate: _email.isNotEmpty,
+                    autocorrect: _email.isNotEmpty,
                     validator: emailValidator,
                     decoration: clearInput(
                       labelText: 'Email',
@@ -127,7 +127,7 @@ class _AuthFormState extends State<AuthForm> {
                   TextFormField(
                     controller: _passwordController,
                     focusNode: _passwordFocus,
-                    autovalidate: _password.isNotEmpty,
+                    autocorrect: _password.isNotEmpty,
                     validator: passwordValidator,
                     obscureText: _obscurePassword,
                     decoration: clearInput(
@@ -149,7 +149,7 @@ class _AuthFormState extends State<AuthForm> {
                     TextFormField(
                       controller: _passwordConfirmController,
                       focusNode: _passwordConfirmFocus,
-                      autovalidate: _passwordConfirm.isNotEmpty,
+                      autocorrect: _passwordConfirm.isNotEmpty,
                       validator: (val) =>
                           passwordConfirmValidator(val, _password),
                       obscureText: _obscurePasswordConfirm,
@@ -175,7 +175,7 @@ class _AuthFormState extends State<AuthForm> {
                     TextFormField(
                       controller: _fullnameController,
                       focusNode: _fullnameFocus,
-                      autovalidate: _fullname.isNotEmpty,
+                      autocorrect: _fullname.isNotEmpty,
                       validator: fullNameValidator,
                       textCapitalization: TextCapitalization.words,
                       decoration: clearInput(

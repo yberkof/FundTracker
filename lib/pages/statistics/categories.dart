@@ -4,8 +4,8 @@ import 'package:fund_tracker/models/category.dart';
 import 'package:fund_tracker/models/preferences.dart';
 import 'package:fund_tracker/models/transaction.dart';
 import 'package:fund_tracker/pages/statistics/indicator.dart';
-import 'package:fund_tracker/shared/library.dart';
 import 'package:fund_tracker/shared/components.dart';
+import 'package:fund_tracker/shared/library.dart';
 
 class Categories extends StatefulWidget {
   final List<Transaction> transactions;
@@ -90,12 +90,11 @@ class _CategoriesState extends State<Categories> {
               show: false,
             ),
             pieTouchData: PieTouchData(
-              touchCallback: (pieTouchResponse) => setState(() {
-                touchedIndex = (pieTouchResponse.touchInput is FlLongPressEnd ||
-                        pieTouchResponse.touchInput is FlPanEnd ||
-                        pieTouchResponse.touchedSectionIndex == null)
+              touchCallback: (pieTouchResponse, res) => setState(() {
+                touchedIndex = (pieTouchResponse.isInterestedForInteractions ||
+                        res.touchedSection.touchedSectionIndex == null)
                     ? touchedIndex
-                    : pieTouchResponse.touchedSectionIndex;
+                    : res.touchedSection.touchedSectionIndex;
               }),
             ),
           ),

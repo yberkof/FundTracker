@@ -5,12 +5,11 @@ import 'package:fund_tracker/models/preferences.dart';
 import 'package:fund_tracker/models/transaction.dart';
 import 'package:fund_tracker/pages/statistics/balance.dart';
 import 'package:fund_tracker/pages/statistics/categories.dart';
-import 'package:fund_tracker/pages/statistics/periodic.dart';
 import 'package:fund_tracker/pages/statistics/topExpenses.dart';
+import 'package:fund_tracker/shared/components.dart';
 import 'package:fund_tracker/shared/constants.dart';
 import 'package:fund_tracker/shared/library.dart';
 import 'package:fund_tracker/shared/styles.dart';
-import 'package:fund_tracker/shared/components.dart';
 
 class Statistics extends StatefulWidget {
   final List<Transaction> allTransactions;
@@ -244,11 +243,11 @@ class _StatisticsState extends State<Statistics> {
             ),
             if (_showAllTimeStats || _showCustomStats) ...[
               SizedBox(height: 20.0),
-              Periodic(
-                dividedTransactions: _showAllTimeStats
-                    ? _dividedTransactions
-                    : _customDividedTransactions,
-              ),
+              // Periodic(
+              //   dividedTransactions: _showAllTimeStats
+              //       ? _dividedTransactions
+              //       : _customDividedTransactions,
+              // ),
             ],
             SizedBox(height: 20.0),
             Divider(height: 1.0),

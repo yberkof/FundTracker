@@ -1,42 +1,79 @@
 {
   "project_info": {
-    "project_number": "494091289902",
-    "firebase_url": "https://fundtracker-6b6b0.firebaseio.com",
-    "project_id": "fundtracker-6b6b0",
-    "storage_bucket": "fundtracker-6b6b0.appspot.com"
+    "project_number": "700818926866",
+    "project_id": "go-school-d5c01",
+    "storage_bucket": "go-school-d5c01.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:494091289902:android:a384b1bc84486d3e7726bf",
+        "mobilesdk_app_id": "1:700818926866:android:b72ca1c3015b02a436d7cb",
         "android_client_info": {
-          "package_name": "com.ys27.fundTracker"
+          "package_name": "com.ahmed.school"
         }
       },
       "oauth_client": [
         {
-          "client_id": "494091289902-8ua3rmf1gsgbcv2gc8akhfhopqas5ful.apps.googleusercontent.com",
+          "client_id": "700818926866-m3vmkdsfm4trig9of72u0afnl5hll4sh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ahmed.school",
+            "certificate_hash": "70fc8ebec20a177cda0dbcc258ee453bbdfdf03d"
+          }
+        },
+        {
+          "client_id": "700818926866-692rgs0dh4qhar1l65raqdhl94du95qb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCiZ-gfUEvsF8FZMa6vsk3xtOJFD3q2Pyk"
+          "current_key": "AIzaSyBgDW89m098MyqVLEbTrxNxMb97TKczWEY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "494091289902-8ua3rmf1gsgbcv2gc8akhfhopqas5ful.apps.googleusercontent.com",
+              "client_id": "700818926866-692rgs0dh4qhar1l65raqdhl94du95qb.apps.googleusercontent.com",
               "client_type": 3
-            },
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700818926866:android:8e1e83d32a0507bc36d7cb",
+        "android_client_info": {
+          "package_name": "com.ys27.fund_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700818926866-95r4qgsnuhd03895pv4cn94s2jjilql6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ys27.fund_tracker",
+            "certificate_hash": "b0e7d579e7b6122a62d80e3d5364566e8e716065"
+          }
+        },
+        {
+          "client_id": "700818926866-692rgs0dh4qhar1l65raqdhl94du95qb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgDW89m098MyqVLEbTrxNxMb97TKczWEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
             {
-              "client_id": "494091289902-8jdoeufg06m3e0aufn3sifnkt2lqsm96.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.ys27.fundTracker"
-              }
+              "client_id": "700818926866-692rgs0dh4qhar1l65raqdhl94du95qb.apps.googleusercontent.com",
+              "client_type": 3
             }
           ]
         }

@@ -35,6 +35,8 @@ dependencies:
   flutter_typeahead:
   community_material_icon:
   flex_color_picker:
+  flutter_iconpicker:
+
 dev_dependencies:
   flutter_launcher_icons:
   flutter_test:

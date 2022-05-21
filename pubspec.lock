@@ -162,18 +162,25 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.50.1"
+  flex_color_picker:
+    dependency: "direct main"
+    description:
+      name: flex_color_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.5.0"
   flutter:
     dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_colorpicker:
+  flutter_iconpicker:
     dependency: "direct main"
     description:
-      name: flutter_colorpicker
+      name: flutter_iconpicker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.3"
+    version: "3.1.4+1"
   flutter_keyboard_visibility:
     dependency: transitive
     description:
@@ -226,6 +233,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  font_awesome_flutter:
+    dependency: transitive
+    description:
+      name: font_awesome_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "10.1.0"
   http_parser:
     dependency: transitive
     description:
@@ -422,4 +436,4 @@ packages:
     version: "3.1.0"
 sdks:
   dart: ">=2.16.0 <3.0.0"
-  flutter: ">=2.0.0"
+  flutter: ">=2.2.0"

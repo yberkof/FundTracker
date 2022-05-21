@@ -82,23 +82,23 @@ class _CategoriesState extends State<Categories> {
           },
         ),
         SizedBox(height: 35.0),
-        PieChart(
-          PieChartData(
-            sections: sectionData,
-            sectionsSpace: 1,
-            borderData: FlBorderData(
-              show: false,
-            ),
-            pieTouchData: PieTouchData(
-              touchCallback: (pieTouchResponse, res) => setState(() {
-                touchedIndex = (pieTouchResponse.isInterestedForInteractions ||
-                        res.touchedSection.touchedSectionIndex == null)
-                    ? touchedIndex
-                    : res.touchedSection.touchedSectionIndex;
-              }),
-            ),
-          ),
-        ),
+        // PieChart(
+        //   PieChartData(
+        //     sections: sectionData,
+        //     sectionsSpace: 1,
+        //     borderData: FlBorderData(
+        //       show: false,
+        //     ),
+        //     pieTouchData: PieTouchData(
+        //       touchCallback: (pieTouchResponse, res) => setState(() {
+        //         touchedIndex = (pieTouchResponse.isInterestedForInteractions ||
+        //                 res.touchedSection.touchedSectionIndex == null)
+        //             ? touchedIndex
+        //             : res.touchedSection.touchedSectionIndex;
+        //       }),
+        //     ),
+        //   ),
+        // ),
         SizedBox(height: 20.0),
         Column(
           mainAxisSize: MainAxisSize.max,

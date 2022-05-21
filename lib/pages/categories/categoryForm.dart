@@ -1,13 +1,14 @@
 import 'package:community_material_icon/community_material_icon.dart';
-import 'package:firebase_auth/firebase_auth.dart' as FirebaseAuthentication show User;
+import 'package:firebase_auth/firebase_auth.dart' as FirebaseAuthentication
+    show User;
+import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:fund_tracker/models/category.dart';
 import 'package:fund_tracker/pages/categories/iconsList.dart';
 import 'package:fund_tracker/services/databaseWrapper.dart';
 import 'package:fund_tracker/services/sync.dart';
-import 'package:fund_tracker/shared/styles.dart';
 import 'package:fund_tracker/shared/components.dart';
+import 'package:fund_tracker/shared/styles.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -151,15 +152,14 @@ class _CategoryFormState extends State<CategoryForm> {
                             ],
                           ),
                           onPressed: () async {
-                            Color color = await showDialog(
-                              context: context,
+                            Color color = await Navigator.of(context)
+                                .push(MaterialPageRoute(
                               builder: (context) {
-                                return categoryColorPicker(
-                                  context,
-                                  _iconColor,
+                                return CategoryColorPicker(
+                                  currentColor: _iconColor,
                                 );
                               },
-                            );
+                            ));
                             if (color != null) {
                               setState(() => _iconColor = color);
                             }
@@ -217,34 +217,83 @@ class _CategoryFormState extends State<CategoryForm> {
   }
 }
 
-Widget categoryColorPicker(BuildContext context, Color currentColor) {
-  Color pickerColor;
+class CategoryColorPicker extends StatefulWidget {
+  final Color currentColor;
 
-  return Scaffold(
-    appBar: AppBar(
-      title: Text('Icon Color Picker'),
-    ),
-    body: Container(
-      padding: formPadding,
-      child: Column(
-        children: <Widget>[
-          ColorPicker(
-            pickerColor: currentColor,
-            onColorChanged: (val) => pickerColor = val,
-            showLabel: true,
-          ),
-          RaisedButton(
-            color: Theme.of(context).primaryColor,
-            child: Text(
-              'Select',
-              style: TextStyle(color: Colors.white),
-            ),
-            onPressed: () => Navigator.of(context).pop(pickerColor),
-          )
-        ],
+  const CategoryColorPicker({Key key, this.currentColor}) : super(key: key);
+
+  @override
+  State<CategoryColorPicker> createState() => _CategoryColorPickerState();
+}
+
+class _CategoryColorPickerState extends State<CategoryColorPicker> {
+  Color screenPickerColor;
+
+  // Color for the picker in a dialog using onChanged.
+  Color dialogPickerColor;
+
+  // Color for picker using the color select dialog.
+  Color dialogSelectColor;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    screenPickerColor = widget.currentColor; // Material blue.
+    dialogPickerColor = widget.currentColor; // Material red.
+    dialogSelectColor = widget.currentColor;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Icon Color Picker'),
       ),
-    ),
-  );
+      body: Container(
+        padding: formPadding,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Card(
+                  elevation: 2,
+                  child: ColorPicker(
+                    // Use the screenPickerColor as start color.
+                    color: screenPickerColor,
+                    // Update the screenPickerColor using the callback.
+                    onColorChanged: (Color color) =>
+                        setState(() => screenPickerColor = color),
+                    width: 44,
+                    height: 44,
+                    borderRadius: 22,
+                    heading: Text(
+                      'Select color',
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                    subheading: Text(
+                      'Select color shade',
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            RaisedButton(
+              color: Theme.of(context).primaryColor,
+              child: Text(
+                'Select',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () => Navigator.of(context).pop(screenPickerColor),
+            )
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 extension on TextEditingController {

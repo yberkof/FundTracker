@@ -573,7 +573,7 @@ class _TransactionFormState extends State<TransactionForm> {
             if (isPlannedTxMode) ...[
               SizedBox(height: 10.0),
               RaisedButton(
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).colorScheme.secondary,
                 child: Text(
                   'Reset End Conditions',
                   style: TextStyle(color: Colors.white),

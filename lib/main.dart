@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart' as FirebaseAuthentication show User;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:fund_tracker/wrapper.dart';
 import 'package:fund_tracker/services/auth.dart';
+import 'package:fund_tracker/wrapper.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -27,10 +27,11 @@ class App extends StatelessWidget {
         child: MaterialApp(
           home: Wrapper(),
           theme: ThemeData(
-            primaryColor: Colors.red[900],
-            accentColor: Colors.blueGrey,
+            primaryColor: Colors.blueAccent[900],
             fontFamily: 'Andika',
             backgroundColor: Colors.white,
+            colorScheme:
+                ColorScheme.fromSwatch().copyWith(secondary: Colors.blueGrey),
           ),
         ),
       ),

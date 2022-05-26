@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:fund_tracker/models/category.dart';
 import 'package:fund_tracker/models/suggestion.dart';
 import 'package:fund_tracker/models/transaction.dart';
+import 'package:fund_tracker/pages/home/mainDrawer.dart';
 import 'package:fund_tracker/services/databaseWrapper.dart';
+import 'package:fund_tracker/shared/components.dart';
 import 'package:fund_tracker/shared/library.dart';
 import 'package:fund_tracker/shared/styles.dart';
-import 'package:fund_tracker/shared/components.dart';
-import 'package:fund_tracker/pages/home/mainDrawer.dart';
 
 class SuggestionsList extends StatefulWidget {
   final FirebaseAuthentication.User user;
@@ -78,7 +78,7 @@ class _SuggestionsListState extends State<SuggestionsList> {
           child: Icon(
             IconData(
               category.icon,
-              fontFamily: 'MaterialDesignIconFont',
+              fontFamily: 'MaterialIcons',
               fontPackage: 'community_material_icon',
             ),
             color: category.iconColor,

@@ -32,11 +32,11 @@ dependencies:
   uuid:
   sticky_headers:
   fl_chart:
-  flutter_typeahead:
+  flutter_typeahead: 3.2.5
   community_material_icon:
   flex_color_picker:
   flutter_iconpicker:
-
+  syncfusion_flutter_charts: 19.4.56
 dev_dependencies:
   flutter_launcher_icons:
   flutter_test:

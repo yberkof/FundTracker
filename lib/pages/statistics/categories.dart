@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fund_tracker/models/category.dart';
 import 'package:fund_tracker/models/preferences.dart';
 import 'package:fund_tracker/models/transaction.dart';
-import 'package:fund_tracker/pages/statistics/indicator.dart';
-import 'package:fund_tracker/shared/components.dart';
 import 'package:fund_tracker/shared/library.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Categories extends StatefulWidget {
   final List<Transaction> transactions;
@@ -21,6 +20,12 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   int touchedIndex = -1;
   bool onlyExpenses;
+  TooltipBehavior _tooltip;
+
+  initState() {
+    super.initState();
+    _tooltip = TooltipBehavior(enable: true, format: 'point.x : point.y%');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,18 +75,13 @@ class _CategoriesState extends State<Categories> {
           .toList();
     }
 
-    return Column(children: <Widget>[
-      StatTitle(title: 'Categories'),
+    return Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
       if (sectionData.length > 0) ...[
         SizedBox(height: 10.0),
-        SwitchListTile(
-          title: Text('Only expenses'),
-          value: onlyExpenses,
-          onChanged: (val) {
-            setState(() => onlyExpenses = val);
-          },
-        ),
-        SizedBox(height: 35.0),
+
+        Container(
+            height: 500, child: _buildDefaultDoughnutChart(_categoricalData)),
+
         // PieChart(
         //   PieChartData(
         //     sections: sectionData,
@@ -99,30 +99,6 @@ class _CategoriesState extends State<Categories> {
         //     ),
         //   ),
         // ),
-        SizedBox(height: 20.0),
-        Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: _categoricalData
-              .asMap()
-              .map(
-                (index, category) => MapEntry(
-                  index,
-                  Indicator(
-                    color: category['iconColor'],
-                    text:
-                        '${category['name']} - \$${category['amount'].toStringAsFixed(2)} (${(category['percentage'] * 100).toStringAsFixed(0)}%)',
-                    isSquare: false,
-                    size: touchedIndex == index ? 18 : 16,
-                    textColor:
-                        touchedIndex == index ? Colors.black : Colors.grey,
-                    handleTap: () => setState(() => touchedIndex = index),
-                  ),
-                ),
-              )
-              .values
-              .toList(),
-        ),
       ] else ...[
         SizedBox(height: 35.0),
         Center(
@@ -131,5 +107,42 @@ class _CategoriesState extends State<Categories> {
         ),
       ]
     ]);
+  }
+
+  SfCircularChart _buildDefaultDoughnutChart(
+      List<Map<String, dynamic>> categoricalData) {
+    return SfCircularChart(
+      enableMultiSelection: false,
+      title: ChartTitle(
+          text: false ? '' : 'Categories', alignment: ChartAlignment.near),
+      legend: Legend(
+        isVisible: !false,
+        overflowMode: LegendItemOverflowMode.scroll,
+        position: LegendPosition.bottom,
+        orientation: LegendItemOrientation.horizontal,
+      ),
+      series: _getDefaultDoughnutSeries(categoricalData),
+      tooltipBehavior: _tooltip,
+    );
+  }
+
+  /// Returns the doughnut series which need to be render.
+  List<DoughnutSeries<Map<String, dynamic>, String>> _getDefaultDoughnutSeries(
+      List<Map<String, dynamic>> categoricalData) {
+    return <DoughnutSeries<Map<String, dynamic>, String>>[
+      DoughnutSeries<Map<String, dynamic>, String>(
+          radius: '90%',
+          explode: true,
+          explodeOffset: '0%',
+          dataSource: <Map<String, dynamic>>[...categoricalData],
+          xValueMapper: (Map<String, dynamic> data, _) => data['name'],
+          yValueMapper: (Map<String, dynamic> data, _) => data['percentage'],
+          dataLabelMapper: (Map<String, dynamic> data, _) =>
+              data['amount'].toStringAsFixed(2) + '\$',
+          dataLabelSettings: const DataLabelSettings(
+            isVisible: true,
+          ),
+          enableTooltip: true)
+    ];
   }
 }

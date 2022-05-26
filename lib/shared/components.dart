@@ -56,7 +56,7 @@ class Loader extends StatelessWidget {
       // color: Theme.of(context).primaryColor,
       child: Center(
         child: SpinKitPulse(
-          color: Theme.of(context).accentColor,
+          color: Theme.of(context).colorScheme.secondary,
         ),
       ),
     );

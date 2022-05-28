@@ -105,6 +105,16 @@ class _AuthFormState extends State<AuthForm> {
               child: ListView(
                 padding: formPadding,
                 children: <Widget>[
+                  Align(
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                      child: Image.asset(
+                        'assets/images/logo.gif',
+                        width: 250,
+                        height: 250,
+                      ),
+                    ),
+                  ),
                   SizedBox(height: 10.0),
                   TextFormField(
                     controller: _emailController,

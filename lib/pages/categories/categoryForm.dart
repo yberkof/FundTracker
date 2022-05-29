@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart' as FirebaseAuthentication
     show User;
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:fund_tracker/models/category.dart';
 import 'package:fund_tracker/services/databaseWrapper.dart';
 import 'package:fund_tracker/services/sync.dart';
@@ -62,23 +61,23 @@ class _CategoryFormState extends State<CategoryForm> {
   }
 
   _pickIcon() async {
-    IconData icon = await FlutterIconPicker.showIconPicker(context,
-        iconSize: 40,
-        iconPickerShape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        title:
-            Text('Pick an icon', style: TextStyle(fontWeight: FontWeight.bold)),
-        closeChild: Text(
-          'Close',
-          textScaleFactor: 1.25,
-        ),
-        searchHintText: 'Search icon...',
-        noResultsText: 'No results for:');
-
-    _icon = icon.codePoint;
-    setState(() {});
-
-    debugPrint('Picked Icon:  $icon');
+    // IconData icon = await FlutterIconPicker.showIconPicker(context,
+    //     iconSize: 40,
+    //     iconPickerShape:
+    //         RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+    //     title:
+    //         Text('Pick an icon', style: TextStyle(fontWeight: FontWeight.bold)),
+    //     closeChild: Text(
+    //       'Close',
+    //       textScaleFactor: 1.25,
+    //     ),
+    //     searchHintText: 'Search icon...',
+    //     noResultsText: 'No results for:');
+    //
+    // _icon = icon.codePoint;
+    // setState(() {});
+    //
+    // debugPrint('Picked Icon:  $icon');
   }
 
   @override
